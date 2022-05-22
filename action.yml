@@ -17,8 +17,8 @@ inputs:
     description: string, github env var for repo token
     required: true
 branding:
-  icon: 'chevron-right'  
-  color: 'gray-dark'
+  icon: 'calendar'  
+  color: 'orange'
 runs:
   using: 'node16'
   main: 'src/index.js'
