@@ -1,7 +1,7 @@
 const core = require('@actions/core')
 const { google } = require('googleapis')
 const { Octokit } = require("@octokit/rest")
-const mergeEvents = require('./src/mergeEvents')
+const mergeEvents = require('./mergeEvents')
 
 const run = async () => {
   try {
