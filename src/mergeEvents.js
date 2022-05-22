@@ -1,3 +1,10 @@
+/**
+ * Takes in a list of events and returns a new object with the events that are           
+ * within the cutoff date.           
+ * @param {Event[]} events - the list of events to filter           
+ * @param {Date} cutoffDate - the date to filter events by           
+ * @returns {Event[]} - the filtered list of events           
+ */
 module.exports = (events, existingEvents) => {
   const linkRegex = /\b(https?):\/\/[\-A-Za-z0-9+&@#\/%?=~_|!:,.;]*[\-A-Za-z0-9+&@#\/%=~_|]/
 

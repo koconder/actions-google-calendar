@@ -1,5 +1,5 @@
-name: 'Google Calendar Import'
-description: 'Imports Google Calendar into a JSON file'
+name: 'Google Calendar Action'
+description: 'Google Calendar Events into a JSON file'
 inputs:
   google-credentials:
     description: string, contents of credentials.json
@@ -20,5 +20,5 @@ branding:
   icon: 'chevron-right'  
   color: 'gray-dark'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'index.js'

@@ -1,4 +1,4 @@
-name: GCal Import
+name: Google Calendar Action
 on:
   issues:
     types: [ opened ]
@@ -6,11 +6,11 @@ on:
     # Runs "at minute 1 past every hour" (see https://crontab.guru)
     # - cron: '1 * * * *'
 jobs:
-  gcalimport:
+  actions-google-calendar:
     runs-on: ubuntu-latest
     steps:
-    - name: GCal Import
-      uses: maxogden/google-calendar-import@v1.0.7
+    - name: Google Calendar
+      uses: koconder/actions-google-calendar
       with:
         google-token: ${{ secrets.GOOGLE_TOKEN }}
         google-credentials: ${{ secrets.GOOGLE_CREDENTIALS }}

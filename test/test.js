@@ -1,8 +1,6 @@
 const testData = require('./test.json')
 const testEvents = require('./testEvents.json')
-
-const mergeEvents = require('./merge-events')
-
+const mergeEvents = require('../mergeEvents.js')
 const testDataBefore = JSON.stringify(testData, null, '  ')
 
 let existingEvents = testData

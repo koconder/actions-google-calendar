@@ -1,2 +1,4 @@
 token.json
 credentials.json
+.DS_Store
+node_modules

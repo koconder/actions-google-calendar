@@ -1,7 +1,7 @@
 const core = require('@actions/core')
 const { google } = require('googleapis')
 const { Octokit } = require("@octokit/rest")
-const mergeEvents = require('./merge-events')
+const mergeEvents = require('./src/mergeEvents')
 
 const run = async () => {
   try {
@@ -39,18 +39,32 @@ const run = async () => {
   }
 }
 
+/**
+ * Gets the Google token from the core.       
+ * @returns {string} The Google token.       
+ */
 const getToken = () => {
   const token = core.getInput('google-token')
   if (token) try { return JSON.parse(token) } catch (e) { throw new Error(`Failed to parse token: ${e}`) }
   throw new Error('Missing Token')
 }
 
+/**
+ * Gets the credentials from the input.
+ * @returns {object} The credentials object.
+ */
 const getCredentials = () => {
   const token = core.getInput('google-credentials')
   if (token) try { return JSON.parse(token) } catch (e) { throw new Error(`Failed to parse credentials: ${e}`) }
   throw new Error('Missing Credentials')
 }
 
+/**
+ * Takes in a token and credentials and returns an OAuth2Client object.       
+ * @param {string} token - the token to use for authentication       
+ * @param {Credentials} credentials - the credentials to use for authentication       
+ * @returns {OAuth2Client} - the OAuth2Client object       
+ */
 const getOAuth2Client = (token, credentials) => {
   const { client_secret, client_id, redirect_uris } = credentials.installed
   const oAuth2Client = new google.auth.OAuth2(
@@ -59,6 +73,12 @@ const getOAuth2Client = (token, credentials) => {
   return oAuth2Client
 }
 
+/**
+ * Takes in a list of events and merges them with the existing events in the file.       
+ * @param {Array<Event>} events - the list of events to merge with the existing events       
+ * @param {Array<Event>} existingEvents - the list of existing events to merge with the new events       
+ * @returns None       
+ */
 const saveToFile = async (repoToken, events, jsonPath) => {
   const octokit = new Octokit({
     auth: repoToken,
@@ -70,7 +90,7 @@ const saveToFile = async (repoToken, events, jsonPath) => {
     owner: username,
     repo: repo,
     path: jsonPath,
-    message: "Updated json programatically",
+    message: "Updated json programmatically",
     content: '',
     committer: {
       name: `Octokit Bot`,
