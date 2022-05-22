@@ -1,0 +1,30 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Google Calendar Action
+
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # schedule:
+    # Runs "at minute 1 past every hour" (see https://crontab.guru)
+    # - cron: '1 * * * *'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  actions-google-calendar:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Google Calendar
+      uses: koconder/actions-google-calendar@v2.0.2
+      with:
+        google-token: ${{ secrets.GOOGLE_TOKEN }}
+        google-credentials: ${{ secrets.GOOGLE_CREDENTIALS }}
+        calendar-id: ${{ secrets.CALENDAR_ID }}
+        json-path: ${{ secrets.JSON_PATH }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
