@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Google Calendar
-      uses: koconder/actions-google-calendar
+      uses: koconder/actions-google-calendar@v2.0.1rc1
       with:
         google-token: ${{ secrets.GOOGLE_TOKEN }}
         google-credentials: ${{ secrets.GOOGLE_CREDENTIALS }}
