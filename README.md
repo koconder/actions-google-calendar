@@ -18,10 +18,14 @@ This action runs on a cron and gets a Google calendars events so you can write t
 
 ## Setup
 
-- Create desktop app on google oauth with gcal enabled.
-- Create consent screen with your email listed as a test user.
-- Download credentials as JSON. run `src/token.js` to generate token.json.
-- Set credentials and token json env vars on github action.
+- Head to Google Cloud project new or existing
+- Sidebar select `API and services`
+- Click `Library` and enable `Google Calendar API`
+- Click `OAuth consent screen` as `External`
+- Create consent screen with your email(s) listed as a test user(s).
+- Download credentials as JSON and sabe in root as `credentials.json`.
+- Run `node src/token.js` to generate token.json following the prompts. When you get redirected in browser the string afer `code=` is your token.
+- Set credentials and token json env vars on github action using the output from the script.
 
 ## Todo
 
